@@ -1,34 +1,39 @@
 ﻿// Задача 1: Напишите программу, которая бесконечно запрашивает целые числа с консоли. Программа завершается при 
 // вводе символа ‘q’ или при вводе числа, сумма цифр которого чётная.
-int q = 8912;
-int leftDigit = number / 100 ; 
-int midleDigit = number %100 / 10;
-int rightDigit = number % 10;
-int sumNumber = leftDigit + midleDigit + rightDigit;
- 
 
- for (;;) {giveMenumber ();}
- giveMenumber (); {
-
+bool exit = true;
+while (exit == true)
+{
     Console.WriteLine("Введите целое, трехзначное  число");
-int number = Convert.ToInt32(Console.ReadLine());
- 
-    if (number > 99 && number <1000) {
-        if(number % 2 == 0 || number % 2 == 1 ) {
-       
-            if (number == q) {
-                break;
-            }
-            else if (sumNumber % 2 == 0) {
-                break;
-            }
+    string number = Console.ReadLine();
+    if (number != "q")
+    {
+        int number1 = Convert.ToInt32(number);
+        int leftDigit = number1 / 100;
+        int midleDigit = number1 % 100 / 10;
+        int rightDigit = number1 % 10;
+        int sumNumber = leftDigit + midleDigit + rightDigit;
+        if (number1 < 99 && number1 < 1000)
+        {
+            Console.WriteLine($" Вы ввели не трехзначное  число  попробуйте ещё");
         }
-
-    } 
-
+        else if (number1 % 1 != 0)
+        {
+            Console.WriteLine($" Вы ввели не целое число ");
+        }
+        else if (sumNumber % 2 == 0)
+        {
+            Console.WriteLine($"Сумма введенных чилел четная ");
+            exit = false;
+        }
     }
-    
-    Console.WriteLine($" {leftDigit}Введите {midleDigit}целое{rightDigit} число{sumNumber}");
+    else
+    {
+        Console.WriteLine("Вы ввели символ q");
+        exit = false;
+    }
+
+}
 
 
 
